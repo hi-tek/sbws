@@ -9,6 +9,11 @@ jQuery(function($) {'use strict';
 		$('html, body').animate({scrollTop: $(this.hash).offset().top - 5}, 1000);
 		return false;
 	});
+	
+  $('div.carousel-content a').on('click', function() {  
+		$('html, body').animate({scrollTop: $(this.hash).offset().top - 5}, 1000);
+		return false;
+	});
 
 	// User define function
 	function Scroll() {
