@@ -204,11 +204,12 @@ jQuery(function($) {'use strict';
 		var form_status = $('<div class="form_status"></div>');
 		$.ajax({
 			url: $(this).attr('action'),
+			method: 'POST',
 			beforeSend: function(){
-				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Email is sending...</p>').fadeIn() );
+				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Skickar meddelande...</p>').fadeIn() );
 			}
 		}).done(function(data){
-			form_status.html('<p class="text-success">Thank you for contact us. As early as possible  we will contact you</p>').delay(3000).fadeOut();
+			form_status.html('<p class="text-success">Tack för att du har kontatat oss. Vi återkommer så snart vi kan!</p>').delay(3000).fadeOut();
 		});
 	});
 
