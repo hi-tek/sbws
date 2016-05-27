@@ -206,10 +206,10 @@ jQuery(function($) {'use strict';
 			url: $(this).attr('action'),
 			method: 'POST',
 			beforeSend: function(){
-				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Skickar meddelande...</p>').fadeIn() );
+				form.append( form_status.html('<i class="fa fa-spinner fa-spin"></i> Skickar meddelande...').fadeIn() );
 			}
 		}).done(function(data){
-			form_status.html('<p class="text-success">Tack för att du har kontatat oss. Vi återkommer så snart vi kan!</p>').delay(3000).fadeOut();
+			form_status.html('<span class="text-success">Tack för att du har kontatat oss. Vi återkommer så snart vi kan!</span>').delay(5000).fadeOut();
 		});
 	});
 
