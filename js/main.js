@@ -202,9 +202,11 @@ jQuery(function($) {'use strict';
 	form.submit(function(event){
 		event.preventDefault();
 		var form_status = $('<div class="form_status"></div>');
+		var formValues = form.get()[0];
 		$.ajax({
 			url: $(this).attr('action'),
 			method: 'POST',
+			data: { name: formValues['name'].value, subject: formValues['subject'].value, email: formValues['email'].value, message: formValues['message'].value },
 			beforeSend: function(){
 				form.append( form_status.html('<i class="fa fa-spinner fa-spin"></i> Skickar meddelande...').fadeIn() );
 			}
