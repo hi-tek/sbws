@@ -210,7 +210,9 @@ jQuery(function($) {'use strict';
 			beforeSend: function(){
 				form.append( form_status.html('<i class="fa fa-spinner fa-spin"></i> Skickar meddelande...').fadeIn() );
 			}
-		}).done(function(data){
+		}).error(function(data){
+			form_status.html('<span class="text-error">Något gick fel när formukäret skulle skickas, vänligen kontakta oss på telefon eller via e-post istället.</span>').delay(5000).fadeOut();
+		}).complete(function(data){
 			form_status.html('<span class="text-success">Tack för att du har kontatat oss. Vi återkommer så snart vi kan!</span>').delay(5000).fadeOut();
 		});
 	});
