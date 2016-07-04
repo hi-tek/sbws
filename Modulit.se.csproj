@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD763E77-0FFE-4616-9AAB-6487FBCB8E66}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Modulit.se</RootNamespace>
+    <AssemblyName>Modulit.se</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\animate.min.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\owl.carousel.css" />
+    <Content Include="css\owl.transitions.css" />
+    <Content Include="css\prettyPhoto.css" />
+    <Content Include="css\responsive.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="images\cta2\cta2-bg.jpg" />
+    <Content Include="images\cta2\cta2-img.png" />
+    <Content Include="images\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="images\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="images\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="images\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="images\ico\favicon.ico" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\original\shutterstock_105530492 frilagd.png" />
+    <Content Include="images\original\shutterstock_105530492.jpg" />
+    <Content Include="images\original\shutterstock_117304129 frilagd.png" />
+    <Content Include="images\original\shutterstock_117304129.jpg" />
+    <Content Include="images\original\shutterstock_213592594.jpg" />
+    <Content Include="images\original\shutterstock_257709394 frilagd.png" />
+    <Content Include="images\original\shutterstock_257709394.jpg" />
+    <Content Include="images\original\shutterstock_298284380 frilagd.png" />
+    <Content Include="images\original\shutterstock_298284380.jpg" />
+    <Content Include="images\original\shutterstock_308784086.jpg" />
+    <Content Include="images\original\shutterstock_408215587.jpg" />
+    <Content Include="images\portfolio\Both.jpg" />
+    <Content Include="images\portfolio\E-Fast-orderimport.jpg" />
+    <Content Include="images\portfolio\Pillerkollen.jpg" />
+    <Content Include="images\prettyPhoto\dark_rounded\btnNext.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\contentPattern.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\dark_rounded\loader.gif" />
+    <Content Include="images\prettyPhoto\dark_rounded\sprite.png" />
+    <Content Include="images\prettyPhoto\dark_square\btnNext.png" />
+    <Content Include="images\prettyPhoto\dark_square\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\dark_square\contentPattern.png" />
+    <Content Include="images\prettyPhoto\dark_square\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\dark_square\loader.gif" />
+    <Content Include="images\prettyPhoto\dark_square\sprite.png" />
+    <Content Include="images\prettyPhoto\default\default_thumb.png" />
+    <Content Include="images\prettyPhoto\default\loader.gif" />
+    <Content Include="images\prettyPhoto\default\sprite.png" />
+    <Content Include="images\prettyPhoto\default\sprite_next.png" />
+    <Content Include="images\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="images\prettyPhoto\default\sprite_x.png" />
+    <Content Include="images\prettyPhoto\default\sprite_y.png" />
+    <Content Include="images\prettyPhoto\facebook\btnNext.png" />
+    <Content Include="images\prettyPhoto\facebook\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternBottom.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternLeft.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternRight.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternTop.png" />
+    <Content Include="images\prettyPhoto\facebook\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\facebook\loader.gif" />
+    <Content Include="images\prettyPhoto\facebook\sprite.png" />
+    <Content Include="images\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="images\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\light_rounded\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="images\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="images\prettyPhoto\light_square\btnNext.png" />
+    <Content Include="images\prettyPhoto\light_square\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\light_square\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\light_square\loader.gif" />
+    <Content Include="images\prettyPhoto\light_square\sprite.png" />
+    <Content Include="images\slider\BuildingBlocks.jpg" />
+    <Content Include="images\slider\Kite.jpg" />
+    <Content Include="images\slider\SuperHeroes.jpg" />
+    <Content Include="images\team\01 frilagd.png" />
+    <Content Include="images\team\01.jpg" />
+    <Content Include="images\team\03.jpg" />
+    <Content Include="images\WoodCube.jpg" />
+    <Content Include="images\work-process\bg.jpg" />
+    <Content Include="index.html" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\html5shiv.js" />
+    <Content Include="js\jquery.inview.min.js" />
+    <Content Include="js\jquery.isotope.min.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.prettyPhoto.js" />
+    <Content Include="js\main.js" />
+    <Content Include="js\mousescroll.js" />
+    <Content Include="js\owl.carousel.min.js" />
+    <Content Include="js\respond.min.js" />
+    <Content Include="js\smoothscroll.js" />
+    <Content Include="js\wow.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CNAME" />
+    <None Include="css\main.less" />
+    <None Include="fonts\fontawesome-webfont.eot" />
+    <None Include="fonts\fontawesome-webfont.ttf" />
+    <None Include="fonts\fontawesome-webfont.woff" />
+    <None Include="fonts\fontawesome-webfont.woff2" />
+    <None Include="fonts\FontAwesome.otf" />
+    <None Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
