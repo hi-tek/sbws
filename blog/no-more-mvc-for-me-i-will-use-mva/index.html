@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vi erbjuder IT-system med hög kvalitet som är anpassade till just din verksamhet. Förutom utveckling av din lösning kan vi hjälpa till med rådgivning, utbildning, drift och support.">
+    <title>Modulit - Vi utvecklar och förvaltar IT-system anpassade till din verksamhet</title>
+	<!-- core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/animate.min.css" rel="stylesheet">
+    <link href="/css/owl.carousel.css" rel="stylesheet">
+    <link href="/css/owl.transitions.css" rel="stylesheet">
+    <link href="/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/agate.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
+</head>
+
+<body id="home" class="homepage">
+
+    <header id="header">
+        <nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Meny</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="../images/logo.png" alt="logo"></a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="scroll"><a href="/">Start</a></li>
+                        <li class="scroll active"><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+    </header><!--/header-->
+
+   
+
+    <section id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-center wow fadeInDown">No more MVC for me, I will use MVA</h2>
+                <p class="text-center wow fadeInDown">Written by Oskar Sjöberg on 9:th of september 2016</p>
+            </div>
+            <div class="row wow fadeInLeft">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-8">
+                <p>
+I’ve been involved in quite a few ASP.NET MVC and Web API projects since ASP.NET MVC´s inception and while I think the frameworks are OK for the most part, I do have a beef with controllers. So please bear with me while I rant, later on I will present a possible solution complete with code and everything, I promise!
+                </p>
+                <br/>
+                                
+<h4>Controllers tend to become large</h4> 
+<p>
+As the controllers grow, the implementation is harder to overview and as a result, code quality usually decline. You see – it is very easy and generally risk free to bolt on just one more action method instead of changing what is already there. Even if you do your best to push code down the layers, controllers in my experience more often than not end up too large with way too many action methods.
+</p>
+<br/>
+
+<h4>Fest fixtures for controllers tend to become large as well</h4>
+<p>
+If you have controller that is large, the corresponding test fixture, if you are well covered that is, is probably large as well. This is because to test all aspects of all action methods in a controller you need even more test methods then there are action methods in the controller under test.
+</p>
+<br/>
+
+<h4>Providing dependencies through the controller´s constructor is a test problem</h4>
+<p>
+Usually constructor injection is used to provide dependencies for controllers. The implication is that if <b>MethodA</b> requires <b>DependencyA</b> and <b>MethodB</b> requires <b>DependencyB</b> both <b>DependencyA</b> and <b>DependencyB</b> are present in the constructor.
+This means that when a request comes in for <b>MethodA</b> instances for both <b>DependencyA</b> and <b>DependencyB</b> are created even though only <b>DependencyA</b> actually is required.
+This is a performance problem for busy sites, but more importantly is that when creating unit tests for your action methods you will need to review the actual implementation of the action methods to determine what dependencies you actually need to provide to the constructor. Another option is to always pass all the dependencies to the constructor and don´t care whether or not they are being used but I would argue that this would not favor the readability of the tests.
+</p>
+<br/>
+
+<h4>Where should I put it?</h4>
+<p>
+I´ve always found it difficult to decide which action method should go into which controller; this is especially true if you are dealing with business event based architectures. Where do you put the action method for the <b>OrderHasBeenShipped</b> event? 
+</p>
+<ul>
+<li>In a massive god controller like <b>BusinessEventController</b> that handles all business events? </li>
+<li>In the <b>OrderController</b> maybe – I mean, it sounds like it has to do something to do with an order after all? </li>
+<li>The <b>CustomerController</b> maybe, because the most important thing is that the customer gets a shipping confirmation?</li>
+<li>Or perhaps I should create a new <b>LogisticsController</b> to deal with all things related to logistics? </li>
+</ul>
+<br/>
+<h4>Refactoring of controllers is more difficult than the average class</h4>
+<p>
+When I later on realize that the <b>OrderHasBeenShipped</b> action method really belongs to the <b>NotificationController</b> or when <b>GodController</b> needs to be split into multiple controllers I now face a new problem. Since the routing is done in runtime, the compiler will not help me detect if I accidently break the URL to action method mapping. While it is possible to do automated tests for URL’s and/or do unit tests for the routing I have never seen it being done in practice to a meaningful extent.
+</p>
+<br/>
+
+<h4>Model-View-Action to the rescue!</h4>
+<p>
+Ok, so you skipped my rant or maybe you read the whole thing. TLDR; I find controllers annoying because I believe I have found a better solution. My variation of the MVC pattern which I am trying to introduce as MVA or Model-View-Action tries to permanently and proactively avoid the problems outlined above. The difference from MVC is minimal, simply put each action method in its own controller.
+This is an example on what it could look like.
+</p>
+
+<br/>
+First of all I setup a route for all of my controllers, please note that I here once and for all decide that the action method name always is <b>Execute</b>.
+<pre><code class="cs">config.Routes.MapHttpRoute(
+    name: "DefaultApi",
+    routeTemplate: "api/{controller}",
+    defaults: new { action = "Execute" }
+);
+</code></pre>
+<p>
+This means the <b>~/api/greet</b> will invoke the <b>Execute</b> action method on <b>GreetController</b>.
+</p>
+
+
+<p>
+And a simple <b>GreetController</b> with a single action method looks like this.
+</p>
+<pre><code class="cs">public class GreetController : ApiController
+{
+    public string Execute(string name)
+    {
+        return "Hello " + name + "!";
+    }
+}
+</code></pre>
+
+<p>
+In a perfect world I would like my GreetingController to be named GreetingAction and derive from Action. While it is easy to create an Action superclass, breaking the “Controller name must end with Controller”-convention requires replacing various services of ASP.Net MVC/ WebApi /ASP.NET Core upon startup with custom implementations. 
+</p>
+
+<p>
+Since the ASP.NET MVC frameworks do not care in what namespace you have your controller you are free to organize your controllers into namespaces and folders any way you like.
+</p>
+<p>
+Thank you for reading my first post! So what do you think, Is this a sensible approach? What issues have I overlooked, please leave some feedback below!
+</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+          
+          <div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function () {
+    this.page.url = "modulit.se/blog/no-more-mvc-for-me-i-will-use-mva";
+    this.page.identifier = "no-more-mvc-for-me-i-will-use-mva";
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//modulit.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2016 Modulit AB
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/mousescroll.js"></script>
+    <script src="/js/smoothscroll.js"></script>
+    <script src="/js/jquery.prettyPhoto.js"></script>
+    <script src="/js/jquery.isotope.min.js"></script>
+    <script src="/js/jquery.inview.min.js"></script>
+    <script src="/js/wow.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
