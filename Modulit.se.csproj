@@ -126,6 +126,7 @@
     <Content Include="images\work-process\bg.jpg" />
     <Content Include="index.html" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\highlight.pack.js" />
     <Content Include="js\html5shiv.js" />
     <Content Include="js\jquery.inview.min.js" />
     <Content Include="js\jquery.isotope.min.js" />
