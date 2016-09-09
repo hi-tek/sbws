@@ -134,10 +134,8 @@
     <Content Include="js\jquery.js" />
     <Content Include="js\jquery.prettyPhoto.js" />
     <Content Include="js\main.js" />
-    <Content Include="js\mousescroll.js" />
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\respond.min.js" />
-    <Content Include="js\smoothscroll.js" />
     <Content Include="js\wow.min.js" />
   </ItemGroup>
   <ItemGroup>
