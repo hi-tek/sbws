@@ -43,7 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="blog\can-you-trust-culture-info\index.html" />
+    <Content Include="blog\can-you-trust-cultureinfo\index.html" />
     <Content Include="blog\index.html" />
     <Content Include="blog\no-more-mvc-for-me-i-will-use-mva\index.html" />
     <Content Include="css\animate.min.css" />
