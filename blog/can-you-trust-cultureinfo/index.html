@@ -65,7 +65,7 @@
                     <p>Last week I decided to refactor some code left from the PHP-era; custom code for managing culture-specific formatting of numbers and currencies. It was a horrible mess of conditions and string formatting with regular expressions, it did not support alternate placements of the currency symbol and it was difficult to extend with new currencies.</p>
                     <p>Also I thought the refactoring would be quite easy. Just set the correct Thread.CurrentThread.CurrentCulture and Thread.CurrentThread.CurrentUICulture based on the visited domain on Application_BeginRequst and then replace all calls to the ported formatting functions to the ones built into the BCL.</p>
                     <p>It all seemed straight forward until I visited the Swedish version of the page where I directly saw an error.</p>
-                    <p>Short translated summary from the Swedish writing rules on Wikipedia (Be aware; Swedish link). https://sv.wikipedia.org/wiki/Wikipedia:Skrivregler </p>
+                    <p>Short translated summary from the <a href="https://sv.wikipedia.org/wiki/Wikipedia:Skrivregler ">Swedish writing rules</a> on Wikipedia (Be aware; Swedish link).</p>
                     <p>Integers are written with a space grouping separator between every group of three digits from the right, like this: 1 000 000. Swedish currency is written the same way but optionally with two decimals and a trailing currency symbol, “kr”, like this: 1 000 000,00 kr.</p>
                     <p>So my thinking was that in code, it would look like this:</p>
 
@@ -88,7 +88,7 @@ CultureInfo
 .Where(cultureInfo => cultureInfo.NumberFormat.CurrencyGroupSeparator != cultureInfo.NumberFormat.NumberGroupSeparator)
 .Select(cultureInfo => new { cultureInfo.EnglishName, cultureInfo.Name, cultureInfo.NumberFormat.CurrencyGroupSeparator, cultureInfo.NumberFormat.NumberGroupSeparator })</code></pre>
                     
-                    <table>
+                    <table class="table span-6">
                         <tr>
                             <th>EnglishName </th>
                             <th>Name </th>
