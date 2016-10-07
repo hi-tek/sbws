@@ -164,7 +164,7 @@ Console.WriteLine(1000.ToString("C"));</code></pre><br/>
                     <p>Also note that different versions of Windows come with different settings pre-loaded. For example the currency symbol for da-DK (Danish-Denmark) is printed before the value on Windows Server 2012 but on Windows 10 the currency symbol is printed after the value. This means that your development environment will not yield the same result as the production server.</p>
                     <p>The solution in my case was pretty straight forward, clone the Swedsh CultureInfo including its NumberFormat and change the CurrencyGroupSeparator to space, and then set the Thread.CurrentCulture to my customized version.</p>
 
-                    <p>But this makes me beg the question, if everyone using CultureInfo need to make work-arounds for the errors in CultureInfo and handle descrepancies between operating systems, what is the point of CultureInfo? Are there any more errors and descrepancies in the CultureInfo data that I need to compensate for? Next time I am not likely to be familiar with the language and can spot the error.</p>
+                    <p>But this makes me beg the question, if everyone using CultureInfo need to make work-arounds for the errors in CultureInfo and also handle descrepancies between operating systems, what is the point of CultureInfo? Are there any more errors or descrepancies in the CultureInfo data that I need to compensate for? Next time I am not likely to be familiar with the language and can spot the error.</p>
                 </div>
             </div>
         </div>
@@ -179,7 +179,7 @@ Console.WriteLine(1000.ToString("C"));</code></pre><br/>
 <script>
 
 var disqus_config = function () {
-    this.page.url = "modulit.se";
+    this.page.url = "modulit.se/2";
     this.page.identifier = '2';
 };
 
