@@ -83,12 +83,12 @@ Console.WriteLine(1000.ToString("C"));</code></pre><br/>
                         <p>I obviously spotted this because Swedish is my native language. What I find interesting is that it is only currencies that use the “.” grouping separator.</p>
                         <p>After some poking around I found out that CultureInfo.NumberFormatInfo contains two properties for what the grouping symbol would be; <a href="https://msdn.microsoft.com/en-us/library/system.globalization.numberformatinfo.numbergroupseparator(v=vs.110).aspx">NumberGroupSeparator</a> and <a href="https://msdn.microsoft.com/en-us/library/system.globalization.numberformatinfo.currencygroupseparator(v=vs.110).aspx">CurrencyGroupSeparator</a>.</p>
                         <p>So I decided to investigate how common it is for cultures to have a different grouping separator for numbers than the grouping separator for currencies.</p>
-                    <<br/>
+                        <br/>
                         <pre><code class="cs">CultureInfo
     .GetCultures(CultureTypes.AllCultures)
     .Where(cultureInfo => cultureInfo.NumberFormat.CurrencyGroupSeparator != cultureInfo.NumberFormat.NumberGroupSeparator)
     .Select(cultureInfo => new { cultureInfo.EnglishName, cultureInfo.Name, cultureInfo.NumberFormat.CurrencyGroupSeparator, cultureInfo.NumberFormat.NumberGroupSeparator })</code></pre>
-                    <<br/>
+                        <br/>
                         <table class="table span-6">
                             <tr>
                                 <th>EnglishName </th>
@@ -159,11 +159,16 @@ Console.WriteLine(1000.ToString("C"));</code></pre><br/>
                         </table>
 
                         <p>Out of 832 cultures on my machine there are only ten that have different group separators. I can obviously tell that this is not right for Swedish, and likely it is not right for Sami which is a language used by the Sami people in the northern part of Sweden, Finland and Norway.</p>
-                        <p>However when visiting various e-commerce sites like store.microsoft.com (which presumably is a Microsoft shop), they print out the currency correct. Also applying the currency format on a cell in Excel is also correct and has probably been correct through all times.</p>
-                        <p>The solution in my case was pretty straight forward, clone the Swedsh CultureInfo including its NumberFormat and change the CurrencyGroupSeparator to space, and then set the Thread.CurrentCulture to my customized version.</p>
-                        <p>The culture data used by CultureInfo is fetched from the operating system. What is interesting is that different versions of Windows come with different settings pre-loaded. For example the currency symbol for da-DK (Danish-Denmark) is printed before the value on Windows Server 2012 but on Windows 10 the currency symbol is printed after the value. This means that your development environment will not yield the same result as the production server.</p>
-                        <p>This makes me beg the question, if everyone using CultureInfo needs to make work-arounds for the errors in CultureInfo and descrepancies between operating systems, what is the point of CultureInfo? Are there any more errors and descrepancies in the CultureInfo data that I need to compensate for? Next time I am not likely to be familiar with the language and can spot the error.</p>
-</div>
+                        <p>However when visiting various e-commerce sites like <a href="https://www.microsoftstore.com/store/mseea/sv_SE/home">the Swedish microsoftstore.microsoft.com</a> (which presumably is a Microsoft shop), they print out the currency correct. Also applying the currency format on a cell in Excel is also correct and has probably been correct through all times.</p>
+                    <p>The culture data used by CultureInfo is fetched from the operating system. It seems like Microsoft itself is not using the data provided from the operating system.
+                        
+                    <p>Also note that different versions of Windows come with different settings pre-loaded. For example the currency symbol for da-DK (Danish-Denmark) is printed before the value on Windows Server 2012 but on Windows 10 the currency symbol is printed after the value. This means that your development environment will not yield the same result as the production server.</p>
+
+
+                    <p>The solution in my case was pretty straight forward, clone the Swedsh CultureInfo including its NumberFormat and change the CurrencyGroupSeparator to space, and then set the Thread.CurrentCulture to my customized version.</p>
+
+                    <p>This makes me beg the question, if everyone using CultureInfo need to make work-arounds for the errors in CultureInfo and handle descrepancies between operating systems, what is the point of CultureInfo? Are there any more errors and descrepancies in the CultureInfo data that I need to compensate for? Next time I am not likely to be familiar with the language and can spot the error.</p>
+                </div>
             </div>
         </div>
     </section>
