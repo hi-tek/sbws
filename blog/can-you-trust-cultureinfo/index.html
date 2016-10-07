@@ -69,12 +69,12 @@
                     <p>Numbers are written with a space grouping separator between every group of three digits from the right, like this: 1 000 with optional decimals. Swedish currency is written the same way but optionally with two decimals and a trailing currency symbol, “kr”, like this: 1 000,00 kr.</p>
                     <p>So my thinking was that in code, it would look like this:</p>
 
-                    <pre><code class="cs">Thread.CurrentThread.CurrentCulture = new CultureInfo("sv-SE", useUserOverride: false);
+                    <p><pre><code class="cs">Thread.CurrentThread.CurrentCulture = new CultureInfo("sv-SE", useUserOverride: false);
 .
 .
 .
 Console.WriteLine(1000.ToString("N"));
-Console.WriteLine(1000.ToString("C"));</code></pre>
+Console.WriteLine(1000.ToString("C"));</code></pre></p>
                     <p>The output for currency however, did not match my expectations:</p>
                     <blockquote>
                             <p>1 000,00</p>
@@ -83,13 +83,12 @@ Console.WriteLine(1000.ToString("C"));</code></pre>
                         <p>I obviously spotted this because Swedish is my native language. What I find interesting is that it is only currencies that use the “.” grouping separator.</p>
                         <p>After some poking around I found out that CultureInfo.NumberFormatInfo contains two properties for what the grouping symbol would be; <a href="https://msdn.microsoft.com/en-us/library/system.globalization.numberformatinfo.numbergroupseparator(v=vs.110).aspx">NumberGroupSeparator</a> and <a href="https://msdn.microsoft.com/en-us/library/system.globalization.numberformatinfo.currencygroupseparator(v=vs.110).aspx">CurrencyGroupSeparator</a>.</p>
                         <p>So I decided to investigate how common it is for cultures to have a different grouping separator for numbers than the grouping separator for currencies.</p>
-
-                        <pre><code class="cs">
-CultureInfo
+                    <p>
+                        <pre><code class="cs">CultureInfo
     .GetCultures(CultureTypes.AllCultures)
     .Where(cultureInfo => cultureInfo.NumberFormat.CurrencyGroupSeparator != cultureInfo.NumberFormat.NumberGroupSeparator)
     .Select(cultureInfo => new { cultureInfo.EnglishName, cultureInfo.Name, cultureInfo.NumberFormat.CurrencyGroupSeparator, cultureInfo.NumberFormat.NumberGroupSeparator })</code></pre>
-
+                    </p><br/>
                         <table class="table span-6">
                             <tr>
                                 <th>EnglishName </th>
