@@ -230,9 +230,9 @@ ul.nostyle i {
   background-size: cover;
 }
 
-@media only screen and (min-width: 2000px) {
+@media only screen and (min-width: 2500px) {
     #main-slider .item {
-      height: 1116px;
+      height: 837px;
     }
 }
 
