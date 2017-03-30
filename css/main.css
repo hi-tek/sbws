@@ -230,11 +230,18 @@ ul.nostyle i {
   background-size: cover;
 }
 
-@media only screen and (min-width: 2000px) {
+@media only screen and (min-width: 1500px) {
     #main-slider .item {
       height: 837px;
     }
 }
+
+@media only screen and (min-width: 2500px) {
+    #main-slider .item {
+      height: 1116px;
+    }
+}
+
 
 #main-slider .slider-inner {
   position: absolute;
