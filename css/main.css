@@ -229,6 +229,16 @@ ul.nostyle i {
   background-position: 50% 0;
   background-size: cover;
 }
+
+@media only screen and (min-width: 1600px) {
+    #main-slider .item {
+      height: 1116px;
+      background-repeat: no-repeat;
+      background-position: 50% 0;
+      background-size: cover;
+    }
+}
+
 #main-slider .slider-inner {
   position: absolute;
   top: 0;
