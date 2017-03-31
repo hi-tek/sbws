@@ -38,7 +38,11 @@ jQuery(function($) {
 
     //Slider
     $(document)
-        .ready(function() {
+        .ready(function () {
+
+            $("body").scrollspy({ target: "#nav2" });
+
+
             var time = 7; // time in seconds
 
             var $progressBar,
