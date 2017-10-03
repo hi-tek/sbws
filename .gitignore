@@ -5,3 +5,4 @@
 *.user
 /obj/Debug
 *.suo
+*.ide
